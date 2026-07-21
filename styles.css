@@ -107,7 +107,18 @@ ul { list-style: none; }
 }
 
 .btn--lg { padding: 16px 36px; font-size: var(--fs-md); }
-.btn--full { width: 100%; }
+.btn--full {
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
+  hyphens: auto;
+}
+
+.pricing__action .btn--full {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .btn--outline {
   background: transparent;
@@ -1676,7 +1687,7 @@ ul { list-style: none; }
   .section { padding: 56px 0; }
 
   .audience__grid { grid-template-columns: repeat(2, 1fr); }
-  .benefits__grid { grid-template-columns: repeat(2, 1fr); }
+  .benefits__grid:not(.benefits__grid--community) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .levels__grid { grid-template-columns: 1fr; }
 
   .reviews__grid {

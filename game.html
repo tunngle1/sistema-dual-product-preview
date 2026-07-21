@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Игра «Система» — Дмитрий Шкаров · 15 июля · Москва</title>
-  <meta name="description" content="Проживи 30 лет своей жизни за 2,5 часа. Офлайн в Москве, 15 июля, 19:00–22:00. Авторская игра для предпринимателей.">
+  <title>Игра «Система» — Дмитрий Шкаров · 16 августа · Москва</title>
+  <meta name="description" content="Проживи 30 лет своей жизни за 2,5 часа. Офлайн в Москве, 16 августа, 15:00. После оплаты — 30 дней доступа в закрытое сообщество.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
       </nav>
       <div class="header__date" id="headerDate">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5"/></svg>
-        15 июля · Москва
+        16 августа · Москва
       </div>
       <button class="burger" aria-label="Меню" id="burger"><span></span><span></span></button>
     </div>
@@ -61,16 +61,39 @@
             Узнай, какие ошибки в ключевых сферах жизни ты совершал — и какие ещё можешь избежать.
             Три главные системы: <strong>здоровье</strong>, <strong>отношения</strong> и <strong>деньги</strong>.
           </p>
+          <p class="hero__gift reveal" id="heroGift">После оплаты вы сразу получаете <strong>30 дней доступа</strong> в закрытое сообщество</p>
           <div class="hero__meta reveal" id="heroMeta">
-            <span class="hero__meta-item">15 июля</span>
-            <span class="hero__meta-item">19:00–22:00</span>
+            <span class="hero__meta-item">16 августа</span>
+            <span class="hero__meta-item">15:00</span>
+            <span class="hero__meta-item" id="heroLocation">Место сообщим ближе к дате игры</span>
             <span class="hero__meta-item">Москва · Офлайн</span>
           </div>
-          <button class="btn btn--primary btn--lg" data-modal-open>
-            Зарегистрироваться
+          <button class="btn btn--primary btn--lg" data-modal-open id="heroCtaBtn">
+            Записаться на игру и получить доступ в сообщество
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
+      </div>
+    </section>
+
+    <!-- ФОРМАТ / КАК ЭТО РАБОТАЕТ -->
+    <section class="section game-format" id="format">
+      <div class="container">
+        <div class="game-format__card reveal">
+          <div class="game-format__icon" aria-hidden="true">🎁</div>
+          <div class="game-format__content">
+            <h2 class="section__title">Как это работает</h2>
+            <p class="game-format__lead">При оплате участия в игре вы получаете <strong>доступ в сообщество на 30 дней</strong>.</p>
+            <p>Это не только игра, но и пространство для дальнейшей работы с темой после встречи — уроки, материалы и поддержка между играми.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАСПИСАНИЕ -->
+    <section class="game-schedule">
+      <div class="container">
+        <p class="game-schedule__text reveal" id="scheduleNote">Игра проводится в Москве стабильно раз в месяц</p>
       </div>
     </section>
 
@@ -205,44 +228,26 @@
       <div class="container">
         <div class="section__header reveal">
           <h2 class="section__title section__title--center">Для кого эта игра?</h2>
-          <p class="section__desc section__desc--center">Игра подойдёт, если ты:</p>
+          <p class="section__desc section__desc--center" id="audienceDesc">Игра подходит для корпоративных компаний, предпринимателей и управленческих команд</p>
         </div>
-        <div class="audience__grid">
+        <div class="audience__grid audience__grid--corporate">
           <div class="audience-card reveal">
             <div class="audience-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
             </div>
-            <p>Стоишь перед важным выбором</p>
+            <p>Корпоративные компании и команды</p>
           </div>
           <div class="audience-card reveal">
             <div class="audience-card__icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <p>Хочешь вывести бизнес или проект на новый уровень</p>
+            <p>Предприниматели и владельцы бизнеса</p>
           </div>
           <div class="audience-card reveal">
             <div class="audience-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <p>Ищешь нестандартное решение сложной задачи</p>
-          </div>
-          <div class="audience-card reveal">
-            <div class="audience-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <p>Хочешь понять причины повторяющихся ситуаций</p>
-          </div>
-          <div class="audience-card reveal">
-            <div class="audience-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 14l9-5-9-5-9 5 9 5z" stroke="currentColor" stroke-width="1.5"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke="currentColor" stroke-width="1.5"/></svg>
-            </div>
-            <p>Развиваешь лидерские качества</p>
-          </div>
-          <div class="audience-card reveal">
-            <div class="audience-card__icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <p>Пытаешься найти причины своих провалов</p>
+            <p>Управленческие команды и руководители</p>
           </div>
         </div>
       </div>
@@ -252,44 +257,33 @@
     <section class="section benefits">
       <div class="container">
         <div class="section__header reveal">
-          <h2 class="section__title section__title--center">Что ты получишь после игры</h2>
+          <h2 class="section__title section__title--center">Что даёт сообщество после игры</h2>
+          <p class="section__desc section__desc--center">30 дней доступа в закрытое пространство — продолжение работы с темой после встречи</p>
         </div>
-        <div class="benefits__grid">
+        <div class="benefits__grid benefits__grid--community">
           <div class="benefit-card reveal">
             <div class="benefit-card__icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <p>Новый взгляд на свою ситуацию</p>
+            <p>Небольшие уроки для закрепления инсайтов</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-card__icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <p>Понимание истинных причин происходящего</p>
+            <p>Дополнительные материалы и рабочие шаблоны</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-card__icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <p>Конкретные идеи и следующие шаги</p>
-          </div>
-          <div class="benefit-card reveal">
-            <div class="benefit-card__icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9.5 2A5.5 5.5 0 004 7.5c0 1.48.58 2.82 1.53 3.82A5.5 5.5 0 109.5 2z" stroke="currentColor" stroke-width="1.5" transform="translate(2,2) scale(0.85)"/></svg>
-            </div>
-            <p>Ощущение внутренней ясности</p>
-          </div>
-          <div class="benefit-card reveal">
-            <div class="benefit-card__icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5"/></svg>
-            </div>
-            <p>Чёткий план — без каши в голове</p>
+            <p>Возможность попасть на разбор к Дмитрию</p>
           </div>
         </div>
         <div class="benefits__cta reveal">
           <div class="pulse-ring" aria-hidden="true"></div>
           <button class="btn btn--primary btn--lg" data-modal-open>
-            Присоединиться к игре
+            Записаться на игру и получить доступ в сообщество
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
         </div>
@@ -423,16 +417,17 @@
         <div class="pricing__card reveal">
           <div class="pricing__info">
             <h2 class="section__title">Регистрация</h2>
-            <p class="pricing__desc" id="pricingDesc">Места ограничены. Офлайн в Москве, 15 июля, 19:00–22:00. Оставьте заявку — мы свяжемся с вами и подтвердим участие.</p>
+            <p class="pricing__desc" id="pricingDesc">Оставьте заявку — после оплаты откроется 30-дневный доступ в закрытое сообщество. 16 августа, 15:00 · Москва.</p>
             <ul class="pricing__includes">
-              <li>3 часа живой игры-разбора с автором метода</li>
+              <li>2,5 часа живой игры-разбора с автором метода</li>
               <li>Системный разбор здоровья, отношений и денег</li>
               <li>Личная карта решений и следующих шагов</li>
-              <li id="pricingLocation">Метро Павелецкая/Новокузнецкая, ул. Садовническая 78, стр 5. Ориентир — арка с табличкой «Берегись автомобиля», вход в синюю дверь с табличкой CitrusHall.</li>
+              <li>30 дней доступа в закрытое сообщество после оплаты</li>
+              <li id="pricingLocation">Место сообщим ближе к дате игры</li>
             </ul>
-            <div class="pricing__referral">
-              <p class="pricing__referral-lead">Пригласите на игру человека, которому «Система» может быть действительно полезна.</p>
-              <p class="pricing__referral-benefit">После его регистрации вы получаете возможность присоединиться к нам <strong>БЕСПЛАТНО</strong>.</p>
+            <div class="pricing__referral pricing__referral--111">
+              <p class="pricing__referral-lead"><strong>1+1=11</strong></p>
+              <p>Приведи на игру друга — и сам не оплачивай участие. Формат для тех, кому «Система» будет действительно полезна.</p>
               <p class="pricing__referral-price">Стоимость участия без рекомендации: <strong id="pricingReferralPrice">2 900 ₽</strong>.</p>
             </div>
           </div>
@@ -441,9 +436,9 @@
               <span class="pricing__amount" id="priceDisplay">2 900</span>
               <span class="pricing__currency" id="currencyDisplay">₽</span>
             </div>
-            <p class="pricing__note" id="priceLabel">Участие в игре «Система» · 15 июля · Москва</p>
-            <button class="btn btn--primary btn--lg btn--full" data-modal-open>
-              Оставить заявку
+            <p class="pricing__note" id="priceLabel">Участие в игре «Система» · 16 августа · Москва</p>
+            <button class="btn btn--primary btn--lg btn--full" data-modal-open id="pricingCtaBtn">
+              Записаться на игру и получить доступ в сообщество
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
             <a class="btn btn--outline btn--full" href="#" id="linkPay" hidden>Оплатить участие</a>
@@ -466,15 +461,14 @@
             <img src="assets/logo.png" alt="Система" class="logo__img logo__img--cta" id="logoCta">
           </div>
           <h2 class="cta__title">
-            Возможно, решение, которое ты так долго искал, уже существует.
-            Иногда достаточно просто посмотреть на ситуацию с другого уровня.
+            Оставьте заявку — после оплаты откроется 30-дневный доступ в закрытое сообщество
           </h2>
           <div class="cta__meta">
-            <span class="cta__date" id="ctaDate">15 июля</span>
-            <span class="cta__seats" id="ctaSeats">Москва · 19:00–22:00 · Офлайн</span>
+            <span class="cta__date" id="ctaDate">16 августа</span>
+            <span class="cta__seats" id="ctaSeats">15:00 · Москва · Офлайн</span>
           </div>
           <button class="btn btn--primary btn--lg" data-modal-open>
-            Регистрация на игру
+            Записаться на игру и получить доступ в сообщество
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
         </div>
@@ -510,7 +504,7 @@
         <h3 class="modal__title">Регистрация на игру</h3>
         <p class="modal__subtitle" id="modalSubtitle">«Система» · 15 июля · Москва · 19:00</p>
         <div class="modal__referral modal__referral--compact">
-          <p><span class="modal__referral-badge">Приведи друга</span> Пригласите человека, которому «Система» будет полезна — участие для вас <strong>бесплатно</strong>. Без рекомендации — <strong id="modalReferralPrice">2 900 ₽</strong>.</p>
+          <p><span class="modal__referral-badge">1+1=11</span> Приведи на игру друга — и сам не оплачивай участие. Без рекомендации — <strong id="modalReferralPrice">2 900 ₽</strong>.</p>
         </div>
         <form class="modal__form" id="regForm">
           <label class="field"><span>Имя</span><input type="text" name="name" required placeholder="Ваше имя"></label>

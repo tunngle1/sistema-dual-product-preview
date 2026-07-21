@@ -602,8 +602,8 @@
   function initEvent() {
     if (!event.date) return;
 
+    var copy = config.copy || {};
     var dateCity = event.date + (event.city ? ' · ' + event.city : '');
-    var timeFormat = [event.time, event.format].filter(Boolean).join(' · ');
 
     var headerDate = document.getElementById('headerDate');
     if (headerDate) {
@@ -613,17 +613,30 @@
       headerDate.appendChild(document.createTextNode(' ' + dateCity));
     }
 
+    var heroGift = document.getElementById('heroGift');
+    if (heroGift && copy.heroGift) {
+      heroGift.innerHTML = copy.heroGift.replace('30 дней доступа', '<strong>30 дней доступа</strong>');
+    }
+
     var heroMeta = document.getElementById('heroMeta');
     if (heroMeta) {
       var items = [event.date, event.time];
       if (event.address) items.push(event.address);
-      else if (event.city && event.format) items.push(event.city + ' · ' + event.format);
-      else if (event.city || event.format) items.push(event.city || event.format);
-      if (event.address && event.format) items.push(event.format);
+      else if (event.city) items.push(event.city);
+      if (event.format) items.push(event.city ? event.city + ' · ' + event.format : event.format);
       heroMeta.innerHTML = items.map(function (item) {
         return '<span class="hero__meta-item">' + item + '</span>';
       }).join('');
     }
+
+    var scheduleNote = document.getElementById('scheduleNote');
+    if (scheduleNote && event.scheduleNote) scheduleNote.textContent = event.scheduleNote;
+
+    var heroCtaBtn = document.getElementById('heroCtaBtn');
+    if (heroCtaBtn && copy.heroCta) heroCtaBtn.textContent = copy.heroCta;
+
+    var pricingCtaBtn = document.getElementById('pricingCtaBtn');
+    if (pricingCtaBtn && copy.heroCta) pricingCtaBtn.textContent = copy.heroCta;
 
     var ctaDate = document.getElementById('ctaDate');
     if (ctaDate) ctaDate.textContent = event.date;
@@ -631,30 +644,31 @@
     var ctaSeats = document.getElementById('ctaSeats');
     if (ctaSeats) {
       var ctaParts = [event.time, event.format].filter(Boolean);
-      if (event.address) ctaParts.unshift(event.address);
-      else if (event.city) ctaParts.unshift(event.city);
+      if (event.city) ctaParts.unshift(event.city);
       ctaSeats.textContent = ctaParts.join(' · ');
     }
 
+    var ctaTitle = document.querySelector('.cta__title');
+    if (ctaTitle && copy.ctaTitle) ctaTitle.textContent = copy.ctaTitle;
+
     var modalSubtitle = document.getElementById('modalSubtitle');
     if (modalSubtitle) {
-      var parts = ['«Система»', event.date, event.city, event.time ? event.time.split('–')[0] : ''].filter(Boolean);
+      var parts = ['«Система»', event.date, event.city, event.time].filter(Boolean);
       modalSubtitle.textContent = parts.join(' · ');
     }
 
     var pricingDesc = document.getElementById('pricingDesc');
-    if (pricingDesc && event.city) {
-      var location = event.address || event.city;
-      var desc = 'Места ограничены. ' + event.format + ' — ' + location + ', ' + event.date + ', ' + event.time + '.';
-      pricingDesc.textContent = payment.enabled
-        ? desc + ' После регистрации — оплата и подтверждение участия.'
-        : desc + ' Оставьте заявку — мы свяжемся с вами и подтвердим участие.';
+    if (pricingDesc) {
+      var desc = copy.pricingDesc || 'Оставьте заявку — после оплаты откроется 30-дневный доступ в закрытое сообщество.';
+      pricingDesc.textContent = desc + ' ' + event.date + ', ' + event.time + ' · ' + event.city + '.';
     }
 
     var pricingLocation = document.getElementById('pricingLocation');
     if (pricingLocation && event.address) pricingLocation.textContent = event.address;
 
-    document.title = document.title.replace(/· \d+ июля[^·]*/, '· ' + event.date + (event.city ? ' · ' + event.city : ''));
+    if (document.title.indexOf('Игра «Система»') !== -1) {
+      document.title = 'Игра «Система» — Дмитрий Шкаров · ' + event.date + ' · ' + (event.city || 'Москва');
+    }
   }
 
   /* ---- About video (секция #about) ---- */

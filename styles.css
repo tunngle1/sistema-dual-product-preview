@@ -2352,3 +2352,99 @@ ul { list-style: none; }
   margin-top: 12px;
   line-height: 1.5;
 }
+
+/* Game page — format, schedule, community */
+.hero__gift {
+  margin: 16px 0 20px;
+  padding: 14px 18px;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  background: rgba(43, 140, 255, 0.08);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  line-height: 1.6;
+}
+
+.hero__gift strong {
+  color: var(--blue-light);
+}
+
+.game-format__card {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 36px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 640px) {
+  .game-format__card { flex-direction: column; padding: 28px 22px; }
+}
+
+.game-format__icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: rgba(43, 140, 255, 0.1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.game-format__lead {
+  font-size: var(--fs-md);
+  color: var(--text);
+  margin: 12px 0 10px;
+  line-height: 1.65;
+}
+
+.game-format__content p:last-child {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+}
+
+.game-schedule {
+  padding: 28px 0;
+  background: rgba(43, 140, 255, 0.06);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.game-schedule__text {
+  text-align: center;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--blue-light);
+}
+
+.audience__grid--corporate {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .audience__grid--corporate { grid-template-columns: 1fr; }
+}
+
+.benefits__grid--community {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .benefits__grid--community { grid-template-columns: 1fr; }
+}
+
+.pricing__referral--111 .pricing__referral-lead strong {
+  color: var(--blue-light);
+  font-size: var(--fs-lg);
+}

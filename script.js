@@ -622,8 +622,7 @@
     if (heroMeta) {
       var items = [event.date, event.time];
       if (event.address) items.push(event.address);
-      else if (event.city) items.push(event.city);
-      if (event.format) items.push(event.city ? event.city + ' · ' + event.format : event.format);
+      if (event.format) items.push(event.format);
       heroMeta.innerHTML = items.map(function (item) {
         return '<span class="hero__meta-item">' + item + '</span>';
       }).join('');

@@ -191,6 +191,8 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  gap: 12px;
+  min-width: 0;
 }
 
 .header__date {
@@ -204,6 +206,8 @@ ul { list-style: none; }
   font-weight: 500;
   color: var(--text-muted);
   box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .burger {
@@ -517,8 +521,12 @@ ul { list-style: none; }
 
 .levels__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+@media (min-width: 1100px) {
+  .levels__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 .level-card {
@@ -574,7 +582,7 @@ ul { list-style: none; }
 /* ---- Audience ---- */
 .audience__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -610,7 +618,7 @@ ul { list-style: none; }
 /* ---- Benefits ---- */
 .benefits__grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 14px;
   margin-bottom: 48px;
 }
@@ -691,6 +699,9 @@ ul { list-style: none; }
 .event-video__poster img {
   width: 100%;
   height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -772,9 +783,10 @@ ul { list-style: none; }
 
 .reviews__grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(150px, 200px));
-  justify-content: center;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .review-card--shorts {
@@ -783,6 +795,7 @@ ul { list-style: none; }
 }
 
 .review-card {
+  min-width: 0;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
@@ -990,14 +1003,18 @@ ul { list-style: none; }
 /* ---- Pricing ---- */
 .pricing__card {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
   gap: 48px;
-  align-items: center;
+  align-items: start;
   padding: 48px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-glow);
+}
+
+.pricing__info {
+  min-width: 0;
 }
 
 .pricing__desc {
@@ -1582,8 +1599,8 @@ ul { list-style: none; }
 
 /* ---- Responsive ---- */
 @media (max-width: 1024px) {
-  .levels__grid { grid-template-columns: repeat(2, 1fr); }
-  .benefits__grid { grid-template-columns: repeat(3, 1fr); }
+  .levels__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .benefits__grid:not(.benefits__grid--community) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .about__grid, .why__grid { grid-template-columns: 1fr; }
   .event-video__grid { grid-template-columns: 1fr; }
   .author-block { grid-template-columns: 1fr; }
@@ -1594,8 +1611,8 @@ ul { list-style: none; }
   .process-step__arrow { display: none; }
   .process-step { max-width: 100%; flex: 1 1 100%; }
   .reviews__grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: stretch;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 540px;
   }
 }
 
@@ -1724,7 +1741,10 @@ ul { list-style: none; }
 
   .hero__meta-item { flex: 1 1 100%; }
 
-  .reviews__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reviews__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+  }
 
   .cta__meta { flex-direction: column; gap: 12px; align-items: stretch; }
 
@@ -1763,9 +1783,11 @@ ul { list-style: none; }
 .header__nav {
   display: none;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
   margin-left: auto;
-  margin-right: 16px;
+  margin-right: 8px;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .header__nav a {
@@ -1786,6 +1808,11 @@ ul { list-style: none; }
 
 @media (min-width: 900px) {
   .header__nav { display: flex; }
+}
+
+@media (min-width: 900px) and (max-width: 1080px) {
+  .header__nav a { font-size: 13px; }
+  .header__date { display: none; }
 }
 
 .section__title--center { text-align: center; }
@@ -2369,6 +2396,11 @@ ul { list-style: none; }
   color: var(--blue-light);
 }
 
+.game-format.section {
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
 .game-format__card {
   display: flex;
   gap: 28px;
@@ -2435,9 +2467,10 @@ ul { list-style: none; }
 }
 
 .benefits__grid--community {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   max-width: 960px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {

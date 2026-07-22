@@ -689,17 +689,89 @@ ul { list-style: none; }
 .event-video { background: rgba(10, 20, 50, 0.25); }
 
 .event-video__grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.event-video__text {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .event-video__player {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.event-video__clips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.event-video__clip {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--border);
+  aspect-ratio: 9 / 16;
+  background: #0a1428;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.event-video__clip:hover {
+  border-color: var(--border);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-glow);
+}
+
+.event-video__clip-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-video__clip-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(43, 140, 255, 0.12) 0%, rgba(10, 20, 50, 0.8) 100%);
+}
+
+.event-video__clip-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, rgba(5, 10, 27, 0.55) 0%, transparent 45%);
+  color: #fff;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.event-video__clip-play svg {
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+  border-radius: 50%;
+  background: rgba(43, 140, 255, 0.85);
+  box-shadow: 0 4px 20px rgba(43, 140, 255, 0.4);
+}
+
+.event-video__clip:hover .event-video__clip-play {
+  background: linear-gradient(0deg, rgba(5, 10, 27, 0.35) 0%, transparent 50%);
 }
 
 .event-video__poster {
@@ -1613,7 +1685,7 @@ ul { list-style: none; }
   .levels__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .benefits__grid:not(.benefits__grid--community) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .about__grid, .why__grid { grid-template-columns: 1fr; }
-  .event-video__grid { grid-template-columns: 1fr; }
+  .event-video__clips { max-width: 480px; }
   .author-block { grid-template-columns: 1fr; }
   .stats-bar__metrics { grid-template-columns: 1fr; }
   .why__items--row { grid-template-columns: 1fr; }
@@ -1693,6 +1765,12 @@ ul { list-style: none; }
   .reviews__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .event-video__clips {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 100%;
+    gap: 10px;
   }
 
   .why__card { padding: 28px 20px; }

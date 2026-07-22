@@ -63,11 +63,33 @@ window.SITE_CONFIG = {
     pepper: 'C6NQTOzALh0wXHSTju6ZRA'
   },
 
-  /* ФОТО С ИГРЫ — секция #event-video */
+  /* КАК ПРОХОДИТ ИГРА — секция #event-video */
   eventVideo: {
     title: 'Как проходит игра «Система»',
-    subtitle: 'Офлайн в Москве · 16 августа, 15:00. Живой разбор — здоровье, отношения, деньги.',
-    poster: 'assets/game-session.jpg'
+    subtitle: '2,5 часа живого разбора — здоровье, отношения, деньги. Увидь формат до регистрации.',
+    videos: [
+      {
+        title: 'Как проходит игра',
+        thumbnail: 'https://pic.rtbcdn.ru/video/2026-07-22/ae/a7/aea7cddf8a18a083f3800c416f1f27a8.jpg',
+        videoUrl: 'https://rutube.ru/video/private/7746492801101d5e09f91f8eb6a177cd/?p=aR97C3Ow9QTMQXmisKe6KQ',
+        videoId: '7746492801101d5e09f91f8eb6a177cd',
+        pepper: 'aR97C3Ow9QTMQXmisKe6KQ'
+      },
+      {
+        title: 'Как проходит игра',
+        thumbnail: 'https://pic.rtbcdn.ru/video/2026-07-22/49/de/49deed85977793670a2037b06dcca906.jpg',
+        videoUrl: 'https://rutube.ru/video/private/84a515121ac796b0bfc5762c14cb3d93/?p=aZzVEHI0dtAo9gyBC_h41A',
+        videoId: '84a515121ac796b0bfc5762c14cb3d93',
+        pepper: 'aZzVEHI0dtAo9gyBC_h41A'
+      },
+      {
+        title: 'Как проходит игра',
+        thumbnail: 'https://pic.rtbcdn.ru/video/2026-07-22/d5/55/d5552d7608143fdf52cd7eca0e14a822.jpg',
+        videoUrl: 'https://rutube.ru/video/private/b1271dac766b82337978c7d414c614e6/?p=bEnJqtLk6wxHgIlIh2mMOQ',
+        videoId: 'b1271dac766b82337978c7d414c614e6',
+        pepper: 'bEnJqtLk6wxHgIlIh2mMOQ'
+      }
+    ]
   },
 
   /* ВИДЕООТЗЫВЫ — секция #reviews (Rutube embed) */

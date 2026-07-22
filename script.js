@@ -166,7 +166,7 @@
     grid.querySelectorAll('.review-card').forEach(function (card) {
       card.addEventListener('click', function () {
         var idx = parseInt(card.getAttribute('data-video-index'), 10);
-        openVideoModal(reviews[idx]);
+        openVideoModal(reviews[idx], { shorts: true });
       });
     });
 
@@ -214,21 +214,27 @@
   var videoFrame = document.getElementById('videoFrame');
   var videoInfo = document.getElementById('videoInfo');
 
-  function openVideoModal(review) {
+  function openVideoModal(review, opts) {
+    opts = opts || {};
     if (!review || !videoModal) return;
 
     if (!review.videoUrl) {
       videoFrame.src = '';
-      videoInfo.innerHTML = '<strong>' + review.name + '</strong> — видео скоро будет добавлено';
+      videoInfo.innerHTML = '<strong>' + (review.name || review.title || 'Видео') + '</strong> — видео скоро будет добавлено';
       videoModal.classList.add('open');
       videoModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       return;
     }
 
-    videoFrame.src = buildVideoSrc(review.videoUrl);
-    videoInfo.innerHTML = '<strong>' + review.name + '</strong> — ' + review.role;
-    videoModal.classList.add('modal--shorts', 'open');
+    videoFrame.src = buildVideoSrc(review.videoUrl, false, review.videoId, review.pepper);
+    var label = review.name || review.title || 'Видео';
+    var role = review.role || '';
+    videoInfo.innerHTML = role
+      ? '<strong>' + label + '</strong> — ' + role
+      : '<strong>' + label + '</strong>';
+    if (opts.shorts) videoModal.classList.add('modal--shorts');
+    videoModal.classList.add('open');
     videoModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
@@ -707,20 +713,67 @@
     }
   }
 
-  /* ---- Event photo (секция #event-video) ---- */
+  /* ---- Event videos (секция #event-video) ---- */
   function initEventVideo() {
     var ev = config.eventVideo || {};
-    var images = config.images || {};
-
     var titleEl = document.getElementById('eventVideoTitle');
     var subtitleEl = document.getElementById('eventVideoSubtitle');
-    var posterImg = document.getElementById('eventVideoPosterImg');
+    var clipsEl = document.getElementById('eventVideoClips');
+    var videos = ev.videos || [];
 
     if (titleEl && ev.title) titleEl.textContent = ev.title;
     if (subtitleEl && ev.subtitle) subtitleEl.textContent = ev.subtitle;
+    if (!clipsEl || !videos.length) return;
 
-    var posterSrc = ev.poster || images.gameSession || 'assets/game-session.jpg';
-    if (posterImg) posterImg.src = posterSrc;
+    clipsEl.innerHTML = videos.map(function (video, i) {
+      return (
+        '<button class="event-video__clip" type="button" data-clip-index="' + i + '" aria-label="Смотреть: ' + (video.title || 'видео ' + (i + 1)) + '">' +
+          (video.thumbnail
+            ? '<img class="event-video__clip-thumb" src="' + video.thumbnail + '" alt="" loading="lazy">'
+            : '<span class="event-video__clip-placeholder"></span>') +
+          '<span class="event-video__clip-play">' +
+            '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
+          '</span>' +
+        '</button>'
+      );
+    }).join('');
+
+    clipsEl.querySelectorAll('.event-video__clip').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.getAttribute('data-clip-index'), 10);
+        openVideoModal(videos[idx], { shorts: true });
+      });
+    });
+
+    videos.forEach(function (video, i) {
+      if (video.thumbnail || !video.videoId) return;
+
+      var apiUrl = 'https://rutube.ru/api/video/' + video.videoId + '/';
+      if (video.pepper) apiUrl += '?p=' + video.pepper;
+
+      fetch(apiUrl)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data.thumbnail_url) return;
+          var btn = clipsEl.querySelector('.event-video__clip[data-clip-index="' + i + '"]');
+          if (!btn) return;
+          var existing = btn.querySelector('.event-video__clip-thumb');
+          if (existing) {
+            existing.src = data.thumbnail_url;
+          } else {
+            var placeholder = btn.querySelector('.event-video__clip-placeholder');
+            if (placeholder) placeholder.remove();
+            var img = document.createElement('img');
+            img.className = 'event-video__clip-thumb';
+            img.src = data.thumbnail_url;
+            img.alt = '';
+            img.loading = 'lazy';
+            btn.insertBefore(img, btn.firstChild);
+          }
+          if (data.title && !video.title) video.title = data.title;
+        })
+        .catch(function () {});
+    });
   }
 
   /* ---- Images from config ---- */
